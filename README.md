@@ -1,24 +1,9 @@
 # Spec Drift Guard
 
-<p align="center">
-  <img src="assets/logo.svg" width="160" alt="Spec Drift Guard logo" />
-</p>
+A lightweight GitHub Action that checks whether PR acceptance criteria (AC IDs) are actually referenced in code/test/analytics changes.
 
-<p align="center">
-  <b>Keep acceptance criteria aligned with code.</b><br>
-  Lightweight GitHub Action to prevent spec drift in PRs.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/platform-GitHub%20Actions-111111" />
-  <img src="https://img.shields.io/badge/language-Node.js-111111" />
-  <img src="https://img.shields.io/badge/purpose-PR%20Guard-111111" />
-</p>
-
-## What it does
-Spec Drift Guard checks your PR description for acceptance criteria (AC IDs) and verifies that each AC appears in the actual code/test/analytics changes. If any AC ID is missing from the diff, the action fails.
-
-This keeps requirements tied to implementation and prevents ?spec drift.?
+## Why
+Specs drift. PRs merge without tests or instrumentation linked to the acceptance criteria. This action blocks that drift.
 
 ## Quick start
 
@@ -43,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./spec-drift-guard
+      - uses: ./
         with:
           token: ${{ github.token }}
           ac_regex: "AC-[0-9]+"
@@ -66,6 +51,11 @@ jobs:
 
 ## Example policy
 See `docs/POLICY.md`.
+
+## Demo PR (for CI)
+This repo includes a demo PR branch that exercises the action:
+- AC-1 is referenced in `docs/DEMO_PR_BODY.md`
+- AC-2 is referenced in `src/demo.js`
 
 ## Limitations
 - GitHub API `patch` content can be truncated for large diffs.
