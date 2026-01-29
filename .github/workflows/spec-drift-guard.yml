@@ -1,0 +1,16 @@
+name: Spec Drift Guard
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  spec-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          token: ${{ github.token }}
+          ac_regex: "AC-[0-9]+"
+          require_ac: "false"
+          fail_on_missing: "true"
