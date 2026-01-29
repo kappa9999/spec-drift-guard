@@ -1,0 +1,27 @@
+name: "Spec Drift Guard"
+description: "Checks PR acceptance criteria coverage in code changes"
+author: "kappa9999"
+inputs:
+  token:
+    description: "GitHub token"
+    required: true
+    default: "${{ github.token }}"
+  ac_regex:
+    description: "Regex to find acceptance criteria IDs in PR body"
+    required: false
+    default: "AC-[0-9]+"
+  require_ac:
+    description: "Fail if no AC IDs are found in PR description"
+    required: false
+    default: "false"
+  fail_on_missing:
+    description: "Fail if any AC IDs are missing from code changes"
+    required: false
+    default: "true"
+  summary:
+    description: "Write a summary to the GitHub Actions summary"
+    required: false
+    default: "true"
+runs:
+  using: "node20"
+  main: "dist/index.js"

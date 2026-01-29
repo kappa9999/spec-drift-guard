@@ -1,0 +1,12 @@
+{
+  "name": "spec-drift-guard",
+  "version": "0.1.0",
+  "description": "GitHub Action to detect spec drift between PR acceptance criteria and code changes",
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  }
+}
