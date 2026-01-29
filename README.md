@@ -10,6 +10,9 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/marketplace/actions/spec-drift-guard">
+    <img src="https://img.shields.io/badge/marketplace-Spec%20Drift%20Guard-111111" />
+  </a>
   <img src="https://img.shields.io/badge/platform-GitHub%20Actions-111111" />
   <img src="https://img.shields.io/badge/language-Node.js-111111" />
   <img src="https://img.shields.io/badge/purpose-PR%20Guard-111111" />
@@ -43,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./spec-drift-guard
+      - uses: kappa9999/spec-drift-guard@v0.1.0
         with:
           token: ${{ github.token }}
           ac_regex: "AC-[0-9]+"
@@ -66,6 +69,11 @@ jobs:
 
 ## Example policy
 See `docs/POLICY.md`.
+
+## Demo PR (for CI)
+This repo includes a demo PR branch that exercises the action:
+- AC-1 is referenced in `docs/DEMO_PR_BODY.md`
+- AC-2 is referenced in `src/demo.js`
 
 ## Limitations
 - GitHub API `patch` content can be truncated for large diffs.
